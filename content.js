@@ -63,6 +63,28 @@ function initSpeedSlider() {
     const label = document.createElement('div');
     label.className = 'ytp-speed-label';
     label.textContent = '1x';
+
+    // Add click listener to toggle through speeds cyclically
+    label.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent clicks from interfering with parent containers
+      
+      if (!video) return;
+
+      const currentSpeed = video.playbackRate;
+      let currentIndex = SPEEDS.indexOf(currentSpeed);
+      
+      // Fallback in case the speed was set to a custom value outside our array
+      if (currentIndex === -1) {
+        currentIndex = 0; 
+      }
+
+      // Calculate the next index, looping back to 0 if at the end
+      const nextIndex = (currentIndex + 1) % SPEEDS.length;
+      
+      // Update the video speed directly. 
+      // The existing 'ratechange' listener will automatically update the UI!
+      video.playbackRate = SPEEDS[nextIndex];
+    });
     
     const panel = document.createElement('div');
     panel.className = 'ytp-speed-panel';
