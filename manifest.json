@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Speed Slider",
+  "version": "1.0",
+  "description": "Adds a playback speed slider to the YouTube video player.",
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
