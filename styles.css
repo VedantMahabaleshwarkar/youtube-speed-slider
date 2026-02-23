@@ -1,9 +1,9 @@
 .ytp-speed-area {
   display: inline-flex;
   align-items: center;
-  vertical-align: top;
+  vertical-align: middle; /* Ensures perfect centering in fullscreen bar */
   height: 36px;
-  margin: 6px 4px;
+  margin: 0 4px; /* Removed hardcoded top/bottom margins */
   border-radius: 18px;
   cursor: pointer;
   white-space: nowrap;
@@ -19,11 +19,11 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  padding: 0 8px;
+  width: auto !important; /* Prevents YT native button from squishing layout */
+  padding: 0 4px !important; /* 4px gap for perfectly concentric pill shapes */
   margin: 0 !important;
 }
 
-/* Prevent double background from YouTube's native button hover */
 .ytp-speed-area:hover .ytp-speed-button {
   background-color: transparent !important;
 }
@@ -86,10 +86,12 @@
   align-items: center;
   justify-content: center;
   height: 28px;
+  font-family: "YouTube Noto", Roboto, Arial, Helvetica, sans-serif; /* Matches native UI */
   font-size: 13px;
   font-weight: 500;
   color: #eee;
-  min-width: 36px;
+  padding: 0 10px; /* Internal padding for text */
+  min-width: unset; /* Adapts smoothly to changing text width */
   user-select: none;
   border-radius: 14px;
   transition: background-color 0.1s ease, color 0.1s ease, transform 0.1s ease;
